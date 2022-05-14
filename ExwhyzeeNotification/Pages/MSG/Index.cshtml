@@ -1,0 +1,96 @@
+﻿@page
+@model ExwhyzeeNotification.Pages.MSG.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Repeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Minute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].NotificationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].NotifyStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].NotificationType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Retries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Receipient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Message) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minute)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotifyStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Retries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receipient)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

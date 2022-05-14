@@ -1,0 +1,85 @@
+﻿@page
+@model ExwhyzeeNotification.Pages.MSG.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Message</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Message.Id" />
+            <div class="form-group">
+                <label asp-for="Message.Title" class="control-label"></label>
+                <input asp-for="Message.Title" class="form-control" />
+                <span asp-validation-for="Message.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.DateTime" class="control-label"></label>
+                <input asp-for="Message.DateTime" class="form-control" />
+                <span asp-validation-for="Message.DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Content" class="control-label"></label>
+                <input asp-for="Message.Content" class="form-control" />
+                <span asp-validation-for="Message.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Message.Repeat" /> @Html.DisplayNameFor(model => model.Message.Repeat)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Minute" class="control-label"></label>
+                <input asp-for="Message.Minute" class="form-control" />
+                <span asp-validation-for="Message.Minute" class="text-danger"></span>
+            </div>
+          <div class="form-group">
+                <label asp-for="Message.NotificationStatus" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Message.NotificationStatus, new SelectList(Enum.GetValues(typeof(ExwhyzeeNotification.Data.NotificationStatus))), new { @class = "form-control" })
+                <span asp-validation-for="Message.NotificationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.NotifyStatus" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Message.NotifyStatus, new SelectList(Enum.GetValues(typeof(ExwhyzeeNotification.Data.NotifyStatus))), new { @class = "form-control" })
+                <span asp-validation-for="Message.NotifyStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.NotificationType" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Message.NotificationType, new SelectList(Enum.GetValues(typeof(ExwhyzeeNotification.Data.NotificationType))), new { @class = "form-control" })
+                <span asp-validation-for="Message.NotificationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.UserId" class="control-label"></label>
+                <select asp-for="Message.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="Message.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Retries" class="control-label"></label>
+                <input asp-for="Message.Retries" class="form-control" />
+                <span asp-validation-for="Message.Retries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Receipient" class="control-label"></label>
+                <input asp-for="Message.Receipient" class="form-control" />
+                <span asp-validation-for="Message.Receipient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
